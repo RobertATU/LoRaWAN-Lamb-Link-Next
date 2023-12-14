@@ -9,8 +9,8 @@ oldMong.connect('mongodb://127.0.0.1:27017/db');
 
 let pinSchema = new Schema({
   sheepId: String,
-  long: Number,
-  lat: Number ,
+  longitude: Number,
+  latitude: Number ,
   time : { type : Date, default: Date.now }
 }, 
 { timestamps: true },

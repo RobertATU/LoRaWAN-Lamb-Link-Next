@@ -12,6 +12,7 @@ function Map(props) {
   const globalCtx = useContext(GlobalContext)
   const mapCenter = globalCtx.theGlobalObject.mapCenter;
  
+ 
 
   useEffect(() => {
 
@@ -30,18 +31,20 @@ function Map(props) {
     }
     else{
       map.setCenter(mapCenter);
+
     }
   }, [map,mapCenter]);
-
+ 
   let pins =globalCtx.theGlobalObject.pins
 
     
       for (let i = 0;i < globalCtx.theGlobalObject.pins.length;i++){
+        console.log(pins[i].id.date)
 
         const pin = new mapboxgl.Marker()
-          .setLngLat([pins[i].long, pins[i].lat])
+          .setLngLat([pins[i].longitude, pins[i].latitude])
           .addTo(map);
-          const createdAtDate = new Date(pins[i].createdAt)
+          const createdAtDate = new Date(pins[i].id.date)
           const formattedDate = createdAtDate.toLocaleDateString('en-GB');
         pin.setPopup(
           new mapboxgl.Popup().setHTML(`<h3>${pins[i].sheepId}</h3><p>Seen at: ${formattedDate}</p>`)

@@ -19,16 +19,17 @@ export function GlobalContextProvider(props) {
 
     async function getAllPins() {
         const response = await fetch('/api/get-pins', {
-            method: 'POST',
-            body: JSON.stringify({ pins: 'all' }),
+            method: 'Get',
             headers: {
                 'Content-Type': 'application/json'
             }
         });
         let data = await response.json();
-        console.log(data.pins);
-        console.log(data.pins[4].createdAt);
-        setGlobals((previousGlobals) => { const newGlobals = JSON.parse(JSON.stringify(previousGlobals)); newGlobals.pins = data.pins;newGlobals.dataLoaded = true; return newGlobals })
+        for(let i = 0;i<data.length;i++){
+            console.log(data[1]);
+        }
+        
+        setGlobals((previousGlobals) => { const newGlobals = JSON.parse(JSON.stringify(previousGlobals)); newGlobals.pins = data;newGlobals.dataLoaded = true; return newGlobals })
     }
 
     async function editGlobalData(command) { // {cmd: someCommand, newVal: 'new text'}

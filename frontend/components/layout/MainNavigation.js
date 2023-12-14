@@ -16,10 +16,10 @@ function MainNavigation() {
   }
 
   const contents = []
-  
+  console.log(globalCtx.theGlobalObject.pins);
   globalCtx.theGlobalObject.pins.forEach(element => {
   
-    contents.push({title: element.sheepId, long: element.long,lat: element.lat })
+    contents.push({title: element.sheepId, longitude: element.longitude,latitude: element.latitude })
   });
 
   return (

@@ -1,7 +1,6 @@
 async function handler(req, res) { 
-  const response = await fetch('http://localhost:8000/readPin', {
-    method: 'POST',
-    body: JSON.stringify({ cmd: 'all' }),
+  const response = await fetch('http://localhost:8080/api/pins', {
+    method: 'GET',
     headers: {
       'Content-Type': 'application/json'
     }

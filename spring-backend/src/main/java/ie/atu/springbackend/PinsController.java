@@ -21,9 +21,12 @@ public class PinsController {
     }
     @PostMapping("/addPin")
     public Pins addPins(@RequestBody Pins pins){
-                System.out.println(pins);
-        System.out.println(pinsService.addPins(pins).toString());
         return pinsService.addPins(pins);
+    }
+    @DeleteMapping("/removePin/{sheepId}")
+    public Pins addPins(@PathVariable String sheepId){
+
+        return pinsService.deletePin(sheepId);
     }
 
     @GetMapping("/{sheepId}")

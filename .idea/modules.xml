@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/LoraWAN Lamb Link Next.iml" filepath="$PROJECT_DIR$/.idea/LoraWAN Lamb Link Next.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-backend/spring-backend.iml" filepath="$PROJECT_DIR$/spring-backend/spring-backend.iml" />
     </modules>
   </component>
 </project>

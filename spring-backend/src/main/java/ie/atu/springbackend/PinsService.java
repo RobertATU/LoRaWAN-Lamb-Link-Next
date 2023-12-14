@@ -23,4 +23,8 @@ public class PinsService {
     public Pins addPins(Pins pins) {
         return pinsRepo.save(pins);
     }
+
+    public Pins deletePin(String sheepId) {
+        return pinsRepo.deleteBySheepId(sheepId);
+    }
 }

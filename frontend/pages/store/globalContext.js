@@ -26,10 +26,21 @@ export function GlobalContextProvider(props) {
         });
         let data = await response.json();
         for(let i = 0;i<data.length;i++){
-            console.log(data[1]);
+            console.log(data[i]);
         }
         
         setGlobals((previousGlobals) => { const newGlobals = JSON.parse(JSON.stringify(previousGlobals)); newGlobals.pins = data;newGlobals.dataLoaded = true; return newGlobals })
+    }
+    async function deletePinById(sheepId){
+        console.log(sheepId)
+        await fetch('/api/delete-pins',{
+        method:'Post',
+        headers:{
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(sheepId),
+       });
+       await getAllPins();
     }
 
     async function editGlobalData(command) { // {cmd: someCommand, newVal: 'new text'}
@@ -56,6 +67,8 @@ export function GlobalContextProvider(props) {
 
     const context = {
         updateGlobals: editGlobalData,
+        deletePins: deletePinById,
+        getAll:getAllPins,
         theGlobalObject: globals
     }
 

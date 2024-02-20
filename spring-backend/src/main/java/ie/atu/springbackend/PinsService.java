@@ -22,6 +22,7 @@ public class PinsService {
 
 
     public Pins addPins(Pins pins) {
+        System.out.println("Service:"+pins);
         return pinsRepo.save(pins);
     }
 
@@ -29,4 +30,6 @@ public class PinsService {
     public Pins deletePin(String sheepId) {
         return pinsRepo.deleteBySheepId(sheepId);
     }
+
+
 }

@@ -23,4 +23,6 @@ public class Pins {
     private double longitude;
 
     private double latitude;
+
+    private String objectJSON;
 }

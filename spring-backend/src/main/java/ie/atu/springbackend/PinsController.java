@@ -24,6 +24,9 @@ public class PinsController {
                 System.out.println("work");
         System.out.println(pins);
         System.out.println(pins.getObjectJSON());
+        System.out.println(pins.getDeviceName());
+        System.out.println(pins.getDevEUI());
+
 
         String jsonString = pins.getObjectJSON();
         JSONObject  json = new JSONObject(jsonString);

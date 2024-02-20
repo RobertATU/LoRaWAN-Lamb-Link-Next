@@ -25,4 +25,6 @@ public class Pins {
     private double latitude;
 
     private String objectJSON;
+    private String devEUI;
+    private String deviceName;
 }

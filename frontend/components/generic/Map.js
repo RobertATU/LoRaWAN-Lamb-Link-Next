@@ -12,30 +12,35 @@ mapboxgl.accessToken =
   "pk.eyJ1Ijoicm9iZXJ0bXVsZG9vbmZ5cCIsImEiOiJjbHBlajVqejIxZDc5MmhybGZha3N3dGF3In0.EmdczNp0fNiA_es8l1-y9Q";
 function Map(props) {
   const [map, setMap] = useState(null);
-
   const globalCtx = useContext(GlobalContext)
   const mapCenter = globalCtx.theGlobalObject.mapCenter;
+  const zoom = globalCtx.theGlobalObject.zoom;
   let pins =globalCtx.theGlobalObject.pins
  
-
+ 
   useEffect(() => {
 
+    console.log(zoom)
     console.log(pins)
     const initializeMap = () => {
+      
       const mapInst = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v12",
         center: mapCenter,
-        zoom: 9,
+        zoom: zoom,
       });
       setMap(mapInst);
     };
     if (!map) {
       initializeMap();
+     
     }
     else{
       map.setCenter(mapCenter);
-
+      map.setZoom(zoom)
+      
+ 
     }
   
  
@@ -44,16 +49,16 @@ function Map(props) {
     
       for (let i = 0;i < globalCtx.theGlobalObject.pins.length;i++){
         console.log(pins[i].id.date)
+        var pin
 
-        const pin = new mapboxgl.Marker()
-          .setLngLat([pins[i].longitude, pins[i].latitude])
-          .addTo(map);
+        if(i ==  globalCtx.theGlobalObject.pins.length -1)
+        { pin = new mapboxgl.Marker({ "color": "#b40219" }).setLngLat([pins[i].longitude, pins[i].latitude]).addTo(map);}
 
-          const createdAtDate = new Date(pins[i].id.date)
-          const formattedDate = createdAtDate.toLocaleDateString('en-GB');
+        else{
+         pin = new mapboxgl.Marker().setLngLat([pins[i].longitude, pins[i].latitude]).addTo(map);}
 
           const pinPopContent = document.createElement('div');
-          pinPopContent.innerHTML = `<h3>${pins[i].sheepId}</h3><p>Seen at: ${formattedDate}</p><button id="deleteButton_${i}">Delete</button>`;
+          pinPopContent.innerHTML = `<h3>${pins[i].sheepId}</h3><p>Seen at: ${pins[i].id.date}</p><button id="deleteButton_${i}">Delete</button>`;
 
           const pinPopup =  new mapboxgl.Popup().setDOMContent(pinPopContent);
           pin.setPopup(pinPopup);
@@ -82,13 +87,14 @@ function Map(props) {
       };
 
       const deletePin = async(i) => {
-        globalCtx.deletePins(pins[i].sheepId)
+        await globalCtx.deletePins(pins[i].sheepId)
         await globalCtx.getAll();
-        map.remove();
-        initializeMap();
+         map.remove();
+         initializeMap();
+      
       }
 
-    }, [map,mapCenter]);
+    }, [map,mapCenter,zoom]);
 
       
       

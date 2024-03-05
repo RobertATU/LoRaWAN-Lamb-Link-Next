@@ -19,7 +19,7 @@ function MainNavigation() {
   console.log(globalCtx.theGlobalObject.pins);
   globalCtx.theGlobalObject.pins.forEach(element => {
   
-    contents.push({title: element.sheepId, longitude: element.longitude,latitude: element.latitude })
+    contents.push({title: element.sheepId,date: element.id.date,longitude: element.longitude,latitude: element.latitude })
   });
 
   return (

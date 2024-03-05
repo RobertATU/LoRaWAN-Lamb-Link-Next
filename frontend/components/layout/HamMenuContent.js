@@ -13,7 +13,7 @@ export default function HamMenuContent(props) {
     }
 
     function clicked(longitude,latitude) {
-        globalCtx.updateGlobals({ cmd: 'updateMapCenter', newCenter: [longitude,latitude] })
+        globalCtx.updateGlobals({ cmd: 'updateMapCenter', newCenter: [longitude,latitude]})
         console.log(longitude,latitude)
     }
 
@@ -27,7 +27,7 @@ export default function HamMenuContent(props) {
     }
 console.log(props.contents)
     let contentJsx = props.contents.map((item, index) => (  //  [{title: 'Meeting 1', webAddress: '/meet1'}, {title: 'Meeting 2', webAddress: '/meet2'}]
-        <div className={classes.menuItem} key={index} onClick={() => clicked(item.longitude,item.latitude)} >{item.title} </div>
+        <div className={classes.menuItem} key={index} onClick={() => clicked(item.longitude,item.latitude)} >{item.title} {item.date} </div>
     ))
 
     return (

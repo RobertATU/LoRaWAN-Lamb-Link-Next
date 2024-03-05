@@ -9,7 +9,7 @@ import { createContext, useState, useEffect } from 'react'
 const GlobalContext = createContext()
 
 export function GlobalContextProvider(props) {
-    const [globals, setGlobals] = useState({ aString: 'init val', count: 0, hideHamMenu: true,pins: [],mapCenter:[-9.0105,53.2787] , dataLoaded: false })
+    const [globals, setGlobals] = useState({ aString: 'init val', count: 0, hideHamMenu: true,pins: [],mapCenter:[-7.5030,53.4495],zoom:6.5 , dataLoaded: false })
 
  
     useEffect(() => {
@@ -26,7 +26,9 @@ export function GlobalContextProvider(props) {
         });
         let data = await response.json();
         for(let i = 0;i<data.length;i++){
-            console.log(data[i]);
+            console.log(data[i].id.date);
+            data[i].id.date =new Date(data[i].id.date).toLocaleString('en-GB',{dateStyle: 'short',timeStyle: 'short'});
+            console.log(data[i].id.date);
         }
         
         setGlobals((previousGlobals) => { const newGlobals = JSON.parse(JSON.stringify(previousGlobals)); newGlobals.pins = data;newGlobals.dataLoaded = true; return newGlobals })
@@ -59,9 +61,12 @@ export function GlobalContextProvider(props) {
             setGlobals((previousGlobals) => {
                 const newGlobals = JSON.parse(JSON.stringify(previousGlobals))
                 newGlobals.mapCenter = command.newCenter
+                newGlobals.zoom = 20
                 return newGlobals
             });
         }
+
+       
 
     }
 

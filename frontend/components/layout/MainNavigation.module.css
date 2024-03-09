@@ -15,6 +15,9 @@
   font-weight: bold;
   padding: 40%;
 }
+.sidebar{
+  width: 100%;
+}
 
 .header ul {
   list-style: none;

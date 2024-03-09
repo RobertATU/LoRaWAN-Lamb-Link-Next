@@ -6,6 +6,7 @@ import Confirm from '../generic/Confirm';
 import GlobalContext from "../../pages/store/globalContext"
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
+import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/react";
 
 
 mapboxgl.accessToken =
@@ -15,11 +16,19 @@ function Map(props) {
   const globalCtx = useContext(GlobalContext)
   const mapCenter = globalCtx.theGlobalObject.mapCenter;
   const zoom = globalCtx.theGlobalObject.zoom;
-  let pins =globalCtx.theGlobalObject.pins
- 
+  const pins =globalCtx.theGlobalObject.pins
+  
  
   useEffect(() => {
+    const timerId = setInterval(() => {
+      console.log("Location: "+globalCtx.theGlobalObject.mapCenter)
+      globalCtx.updateAll(globalCtx.theGlobalObject.mapCenter,globalCtx.theGlobalObject.zoom);
+    },20000)
+  }, []);
 
+ 
+  useEffect(() => {
+console.log(globalCtx.theGlobalObject)
     console.log(zoom)
     console.log(pins)
     const initializeMap = () => {
@@ -30,6 +39,10 @@ function Map(props) {
         center: mapCenter,
         zoom: zoom,
       });
+      mapInst.on('move', () => {
+        globalCtx.theGlobalObject.mapCenter = mapInst.getCenter().toArray()
+        globalCtx.theGlobalObject.zoom = mapInst.getZoom()
+      })
       setMap(mapInst);
     };
     if (!map) {
@@ -39,8 +52,6 @@ function Map(props) {
     else{
       map.setCenter(mapCenter);
       map.setZoom(zoom)
-      
- 
     }
   
  
@@ -48,7 +59,7 @@ function Map(props) {
 
     
       for (let i = 0;i < globalCtx.theGlobalObject.pins.length;i++){
-        console.log(pins[i].id.date)
+      
         var pin
 
         if(i ==  globalCtx.theGlobalObject.pins.length -1)
@@ -94,14 +105,18 @@ function Map(props) {
       
       }
 
-    }, [map,mapCenter,zoom]);
+    }, [map,mapCenter,zoom,pins]);
 
       
       
     
   return (
     <div>
-      <div id="map" style={{ width: "100%", height: "800px" }}></div>
+      <Card  className="py-12 px-12  bg-card backdrop-blur-2xl xl-card">
+      <CardBody className="">
+      <div id="map" style={{ width: "100%", height: "80vh",  borderRadius: 30, color:"black"}}></div>
+      </CardBody>
+      </Card>
     </div>
   );
 }

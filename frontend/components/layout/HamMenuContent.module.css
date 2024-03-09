@@ -16,10 +16,21 @@
     width: 75%;
     max-width: 275px;
     height: 100%;
-    background-color: #2d0101;
+    background-color: #2f0101;
     overflow-y: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    animation: MyDiv;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in-out;
+     animation-direction: normal;
+  margin: 0px;
+    
+  }
+
+  @keyframes MyDiv {
+    0%   {width:0%}
+    100%  {width:100px}
   }
   .mainContent::-webkit-scrollbar {
     display: none;
@@ -30,5 +41,6 @@
     padding: 10px;
     border: 1px solid gray;
     font-size: 40px;
+    
 }
 

@@ -4,6 +4,7 @@ import GlobalContext from "./store/globalContext"
 
 
 
+
 function HomePage() {
     const globalCtx = useContext(GlobalContext)
 

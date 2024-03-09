@@ -9,6 +9,7 @@ import java.util.Optional;
 
 @Service
 public class PinsService {
+
     @Autowired
     private PinsRepo pinsRepo;
     public List<Pins>allPins(){

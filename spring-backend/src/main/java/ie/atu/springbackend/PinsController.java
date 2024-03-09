@@ -33,6 +33,7 @@ public class PinsController {
         pins.setLongitude(json.getDouble("longitude"));
         pins.setLatitude(json.getDouble("latitude"));
         pins.setSheepId(json.getString("name"));
+        pins.setAccelero_x(json.getDouble("accelero_x"));
         System.out.println(pins);
 
         return pinsService.addPins(pins);

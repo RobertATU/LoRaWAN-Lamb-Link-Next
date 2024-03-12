@@ -37,7 +37,7 @@ function DropdownSidebar() {
   globalCtx.theGlobalObject.pins.forEach((element) => {
     contents.push({
       title: element.sheepId,
-      date: element.id.date,
+      date: element.date,
       longitude: element.longitude,
       latitude: element.latitude,
     });

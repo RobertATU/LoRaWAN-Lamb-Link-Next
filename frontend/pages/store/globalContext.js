@@ -31,12 +31,6 @@ export function GlobalContextProvider(props) {
       },
     });
     let data = await response.json();
-    for (let i = 0; i < data.length; i++) {
-      data[i].id.date = new Date(data[i].id.date).toLocaleString("en-GB", {
-        dateStyle: "short",
-        timeStyle: "short",
-      });
-    }
 
     setGlobals((previousGlobals) => {
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
@@ -55,15 +49,11 @@ export function GlobalContextProvider(props) {
       },
     });
     let data = await response.json();
-    for (let i = 0; i < data.length; i++) {
-      data[i].id.date = new Date(data[i].id.date).toLocaleString("en-GB", {
-        dateStyle: "short",
-        timeStyle: "short",
-      });
-    }
+    
 
     setGlobals((previousGlobals) => {
-        if(globals.pins.length !== previousGlobals.pins.length ){
+        if(globals.pins.length != previousGlobals.pins.length ){
+          console.log(globals.pins.length+ " "  + previousGlobals.pins.length )
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.pins = data;
       newGlobals.mapCenter = center;
@@ -71,20 +61,20 @@ export function GlobalContextProvider(props) {
       newGlobals.dataLoaded = true;
       return newGlobals;}
       else{
+        alert("Nooo")
       return previousGlobals;}
     });
   }
 
-  async function deletePinById(sheepId) {
-    console.log(sheepId);
+  async function deletePinById(genId) {
+    console.log(genId);
     await fetch("/api/delete-pins", {
       method: "Post",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(sheepId),
+      body: JSON.stringify(genId),
     });
-    await getAllPins();
   }
 
   async function editGlobalData(command) {

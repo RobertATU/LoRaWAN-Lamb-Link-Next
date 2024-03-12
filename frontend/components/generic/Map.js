@@ -7,6 +7,7 @@ import GlobalContext from "../../pages/store/globalContext"
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/react";
+import { useRouter } from 'next/router'
 
 
 mapboxgl.accessToken =
@@ -17,7 +18,7 @@ function Map(props) {
   const mapCenter = globalCtx.theGlobalObject.mapCenter;
   const zoom = globalCtx.theGlobalObject.zoom;
   const pins =globalCtx.theGlobalObject.pins
-  
+  const router = useRouter()
  
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -46,6 +47,7 @@ console.log(globalCtx.theGlobalObject)
       setMap(mapInst);
     };
     if (!map) {
+      
       initializeMap();
      
     }
@@ -69,7 +71,7 @@ console.log(globalCtx.theGlobalObject)
          pin = new mapboxgl.Marker().setLngLat([pins[i].longitude, pins[i].latitude]).addTo(map);}
 
           const pinPopContent = document.createElement('div');
-          pinPopContent.innerHTML = `<h3>${pins[i].sheepId}</h3><p>Seen at: ${pins[i].id.date}</p><button id="deleteButton_${i}">Delete</button>`;
+          pinPopContent.innerHTML = `<h3>${pins[i].sheepId}</h3><p>Seen at: ${pins[i].date}</p><button id="deleteButton_${i}">Delete</button>`;
 
           const pinPopup =  new mapboxgl.Popup().setDOMContent(pinPopContent);
           pin.setPopup(pinPopup);
@@ -98,10 +100,8 @@ console.log(globalCtx.theGlobalObject)
       };
 
       const deletePin = async(i) => {
-        await globalCtx.deletePins(pins[i].sheepId)
-        await globalCtx.getAll();
-         map.remove();
-         initializeMap();
+        await globalCtx.deletePins(pins[i].genId)
+        router.reload()
       
       }
 

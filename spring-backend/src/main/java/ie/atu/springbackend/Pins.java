@@ -8,6 +8,8 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 
 @Data
 @AllArgsConstructor
@@ -18,6 +20,8 @@ public class Pins {
     @Generated
     private ObjectId id;
 
+
+    private String genId;
     private String sheepId;
 
     private double longitude;
@@ -25,6 +29,8 @@ public class Pins {
     private double latitude;
 
     private double accelero_x;
+
+    private String date;
 
     private String objectJSON;
     private String devEUI;

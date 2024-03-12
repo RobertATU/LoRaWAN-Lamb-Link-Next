@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface PinsRepo extends MongoRepository<Pins, ObjectId> {
     Optional<Pins> findPinsBySheepId(String sheepId);
 
-    Pins deleteBySheepId(String sheepId);
+    Pins deletePinsByGenId(String genId);
 }

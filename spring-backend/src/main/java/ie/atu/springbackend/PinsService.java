@@ -28,8 +28,8 @@ public class PinsService {
     }
 
     @Transactional
-    public Pins deletePin(String sheepId) {
-        return pinsRepo.deleteBySheepId(sheepId);
+    public Pins deletePin(String genId) {
+        return pinsRepo.deletePinsByGenId(genId);
     }
 
 

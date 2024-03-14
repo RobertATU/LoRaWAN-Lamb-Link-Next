@@ -105,7 +105,7 @@ console.log(globalCtx.theGlobalObject)
       
       }
 
-    }, [map,mapCenter,zoom,pins]);
+    }, [map,mapCenter]);
 
       
       

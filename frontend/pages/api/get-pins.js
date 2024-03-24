@@ -1,5 +1,5 @@
 async function handler(req, res) { 
-  const response = await fetch('http://localhost:8080/api/pins', {
+  const response = await fetch('http://34.197.171.218:8080/api/pins', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'

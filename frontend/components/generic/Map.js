@@ -114,7 +114,7 @@ console.log(globalCtx.theGlobalObject)
     <div>
       <Card  className="py-12 px-12  bg-card backdrop-blur-2xl xl-card">
       <CardBody className="">
-      <div id="map" style={{ width: "100%", height: "80vh",  borderRadius: 30, color:"black"}}></div>
+      <div id="map" style={{ width: "100%", height: "70vh",  borderRadius: 30, color:"black"}}></div>
       </CardBody>
       </Card>
     </div>

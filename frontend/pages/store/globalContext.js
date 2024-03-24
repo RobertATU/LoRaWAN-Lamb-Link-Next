@@ -61,7 +61,7 @@ export function GlobalContextProvider(props) {
       newGlobals.dataLoaded = true;
       return newGlobals;}
       else{
-        alert("Nooo")
+      //  alert("Nooo")
       return previousGlobals;}
     });
   }
@@ -90,7 +90,7 @@ export function GlobalContextProvider(props) {
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
         newGlobals.mapCenter = command.newCenter;
-        newGlobals.zoom = 15;
+        newGlobals.zoom = 20;
         return newGlobals;
       });
     }

@@ -38,6 +38,7 @@ function Layout(props) {
           height={200}
           onClick={() => clickedSheep()}
           alt ="Sheep Icon"
+          title='Icon from: https://www.flaticon.com/free-icons/sheep Sheep icons created by Ains - Flaticon'
         />
       </CardBody>
     </Card>
@@ -54,6 +55,7 @@ function Layout(props) {
           height={200}
           onClick={() => clicked()}
           alt ="Sheep Icon"
+          title='Icon from: https://www.flaticon.com/free-icons/magnifying-glass Magnifying glass icons created by IconMark'
         />
       </CardBody>
      

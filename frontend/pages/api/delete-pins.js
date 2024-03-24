@@ -1,7 +1,7 @@
 async function handler(req, res) { 
     try{console.log("\n\r" + req.body +"\n\r")
     const genId  = req.body.stringify;
-    const response = await fetch('http://localhost:8080/api/pins/removePin/' + req.body, {
+    const response = await fetch('http://34.197.171.218/api/pins/removePin/' + req.body, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

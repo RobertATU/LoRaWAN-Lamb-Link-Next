@@ -33,7 +33,7 @@ function Layout(props) {
       </CardHeader>
       <CardBody className="overflow-visible py-2">
         <Image
-          src="/images/sheep (2).png"
+          src="/images/sheep.png"
           width={200}
           height={200}
           onClick={() => clickedSheep()}

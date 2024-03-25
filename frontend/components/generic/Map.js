@@ -24,7 +24,7 @@ function Map(props) {
     const timerId = setInterval(() => {
       console.log("Location: "+globalCtx.theGlobalObject.mapCenter)
       globalCtx.updateAll(globalCtx.theGlobalObject.mapCenter,globalCtx.theGlobalObject.zoom);
-    },20000)
+    },15000)
   }, []);
 
  

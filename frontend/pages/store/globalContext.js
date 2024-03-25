@@ -52,17 +52,13 @@ export function GlobalContextProvider(props) {
     
 
     setGlobals((previousGlobals) => {
-        if(globals.pins.length != previousGlobals.pins.length ){
-          console.log(globals.pins.length+ " "  + previousGlobals.pins.length )
+        
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.pins = data;
       newGlobals.mapCenter = center;
       newGlobals.zoom = zoom;
       newGlobals.dataLoaded = true;
-      return newGlobals;}
-      else{
-      //  alert("Nooo")
-      return previousGlobals;}
+      return newGlobals;
     });
   }
 

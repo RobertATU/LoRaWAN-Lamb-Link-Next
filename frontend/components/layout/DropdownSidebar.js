@@ -34,12 +34,17 @@ function DropdownSidebar() {
 
   const contents = [];
   console.log(globalCtx.theGlobalObject.pins);
+  var status
   globalCtx.theGlobalObject.pins.forEach((element) => {
+    if(element.accelero_x > 0){status = "Ok"}
+  else{status = "Needs assistance"}
     contents.push({
       title: element.sheepId,
       date: element.date,
       longitude: element.longitude,
       latitude: element.latitude,
+      status,
+
     });
   });
 
@@ -49,7 +54,7 @@ function DropdownSidebar() {
       key={index}
       onClick={() => clicked(item.longitude, item.latitude)}
     >
-      {item.title} {item.date}{" "}
+      {item.title} {item.date} {"\nStatus: "}{item.status}
     </div>
   ));
   return (

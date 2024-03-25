@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -20,8 +21,9 @@ public class Pins {
     @Generated
     private ObjectId id;
 
-
     private String genId;
+
+
     private String sheepId;
 
     private double longitude;

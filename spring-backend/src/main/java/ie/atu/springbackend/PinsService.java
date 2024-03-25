@@ -40,7 +40,7 @@ public class PinsService {
                 System.out.println(pins.getId().getDate());
 
                 pins.setDate(outputFormat.format(pins.getId().getDate()));
-                pins.setGenId(pins.getId().toHexString());
+
             }
         return pinsList;
     }
@@ -67,11 +67,12 @@ public class PinsService {
         pins.setLatitude(json.getDouble("latitude"));
         pins.setSheepId(json.getString("name"));
         pins.setAccelero_x(json.getDouble("accelero_x"));
+        pins.setGenId(String.valueOf((allPins().toArray().length + 1)));
         if(pins.getAccelero_x() < 0){
             count++;
             System.out.println("Count" + count);
         }
-        else if(pins.getAccelero_x() > 0 &&count > 4){
+        else if(pins.getAccelero_x() > 0 &&count > 1){
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
             Message message = Message.creator(
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
@@ -89,7 +90,7 @@ public class PinsService {
             System.out.println("Count" + count);
         }
 
-        if(count == 5){
+        if(count == 2){
             Twilio.init(ACCOUNT_SID, AUTH_TOKEN);
             Message message = Message.creator(
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
@@ -106,6 +107,10 @@ public class PinsService {
     @Transactional
     public Pins deletePin(String genId) {
         return pinsRepo.deletePinsByGenId(genId);
+    }
+
+    public void deleteAllPin() {
+         pinsRepo.deleteAll();
     }
 
 

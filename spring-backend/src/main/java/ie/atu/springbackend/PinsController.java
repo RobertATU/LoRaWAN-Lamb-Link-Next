@@ -28,8 +28,12 @@ public class PinsController {
 
     @DeleteMapping("/removePin/{genId}")
     public Pins addPins(@PathVariable String genId){
-        System.out.println(pinsService.deletePin("\n\n\n\nTest:"+genId));
         return pinsService.deletePin(genId);
+    }
+
+    @DeleteMapping("/removeAll")
+    public void removeAllPins(){
+         pinsService.deleteAllPin();
     }
 
     @GetMapping("/{sheepId}")

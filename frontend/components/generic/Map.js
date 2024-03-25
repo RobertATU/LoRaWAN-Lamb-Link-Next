@@ -62,16 +62,23 @@ console.log(globalCtx.theGlobalObject)
     
       for (let i = 0;i < globalCtx.theGlobalObject.pins.length;i++){
       
-        var pin
+        var pin, status
 
         if(i ==  globalCtx.theGlobalObject.pins.length -1)
-        { pin = new mapboxgl.Marker({ "color": "#b40219" }).setLngLat([pins[i].longitude, pins[i].latitude]).addTo(map);}
+        { 
+          if(pins[i].accelero_x > 0){status = "Ok"}
+          else{status = "Needs assistance"}
+
+          pin = new mapboxgl.Marker({ "color": "#b40219" }).setLngLat([pins[i].longitude, pins[i].latitude]).addTo(map);}
 
         else{
-         pin = new mapboxgl.Marker().setLngLat([pins[i].longitude, pins[i].latitude]).addTo(map);}
+          if(pins[i].accelero_x > 0){status = "Ok"}
+          else{status = "Needs assistance"}
+         pin = new mapboxgl.Marker().setLngLat([pins[i].longitude, pins[i].latitude]).addTo(map);
+         console.log(pins[i].accelero_x)}
 
           const pinPopContent = document.createElement('div');
-          pinPopContent.innerHTML = `<h3>${pins[i].sheepId}</h3><p>Seen at: ${pins[i].date}</p><button id="deleteButton_${i}">Delete</button>`;
+          pinPopContent.innerHTML = `<h3>${pins[i].sheepId}</h3><p>Seen at: ${pins[i].date}</p><p>Status: ${status}</p><button id="deleteButton_${i}">Delete</button>`;
 
           const pinPopup =  new mapboxgl.Popup().setDOMContent(pinPopContent);
           pin.setPopup(pinPopup);

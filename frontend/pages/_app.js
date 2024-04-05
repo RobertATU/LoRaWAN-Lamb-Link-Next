@@ -15,7 +15,6 @@ function MyApp({ Component, pageProps }) {
       <Layout >
 
       <Map/>
-     
       
       </Layout>
     </GlobalContextProvider>

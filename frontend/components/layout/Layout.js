@@ -1,4 +1,3 @@
-import MainNavigation from './MainNavigation';
 import DropdownSidebar from './DropdownSidebar';
 import classes from './Layout.module.css';
 import Image from 'next/image'

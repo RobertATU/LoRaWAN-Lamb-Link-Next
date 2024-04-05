@@ -64,12 +64,16 @@ function DropdownSidebar() {
           <NavbarContent >
             <NavbarMenuToggle className="bg-transparent" />
           </NavbarContent>
-
+          <div className= {classes.mobile}>
+          <p className="font-bold text-inherit text-4xl">LoRaWAN Lamb Link</p> 
+          </div>
+          <div className= {classes.nonmobile}>
           <NavbarContent>
             <NavbarBrand style={{ position:"fixed", left:"43vw"}} className='hidden sm:flex gap-4" justify-end'>
               <p className="font-bold text-inherit text-4xl">LoRaWAN Lamb Link</p>
             </NavbarBrand>
           </NavbarContent>
+          </div>
        
           <NavbarMenu style={{"--navbar-height":"6rem"} } className="max-w-sm backdrop-blur-2xl  bg-background overflow-y-scroll no-scrollbar ">
             <NavbarMenuItem>{contentJsx}</NavbarMenuItem>

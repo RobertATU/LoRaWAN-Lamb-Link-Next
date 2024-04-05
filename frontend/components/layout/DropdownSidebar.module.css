@@ -5,6 +5,23 @@
     padding: 0 0%;
     color: white;
   }
+  .mobile {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+  }
+  .nonmobile {
+  }
+  @media(min-width: 768px){
+    .mobile{
+      display: none;
+    }
+    }
+    @media(max-width: 768px){
+      .nonmobile{
+        display: none;
+      }
+      }
 
   .menuItem{
 padding:20px;

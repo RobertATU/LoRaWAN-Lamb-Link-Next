@@ -77,7 +77,7 @@ public class PinsService {
             Message message = Message.creator(
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
                     new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
-                    "Your Sheep is back up").create();
+                    "Your Sheep"+pins.getSheepId()+" is back up. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
 
             System.out.println(message.getSid());
 
@@ -95,7 +95,7 @@ public class PinsService {
             Message message = Message.creator(
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
                     new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
-                    "Your Sheep is upside down").create();
+                    "Your Sheep"+pins.getSheepId()+ " is in need of assistance. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
 
             System.out.println(message.getSid());
 

@@ -2,6 +2,7 @@
   margin: 2% 7%;
   max-width:75%;
 }
+
 .icon{
   display: flex;
                 flex-direction: row;
@@ -31,4 +32,9 @@
 .iconMag:hover{
   transform: scale(1.5);
 }
-
+@media(max-width: 768px){
+  .icon,
+  .iconMag{
+    display: none;
+  }
+  }

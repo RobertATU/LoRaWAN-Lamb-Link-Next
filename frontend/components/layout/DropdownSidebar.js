@@ -65,7 +65,7 @@ function DropdownSidebar() {
             <NavbarMenuToggle className="bg-transparent" />
           </NavbarContent>
           <div className= {classes.mobile}>
-          <p className="font-bold text-inherit text-xl justify-end">LoRaWAN Lamb Link</p> 
+          <p className="font-bold text-inherit text-l justify-end">LoRaWAN Lamb Link</p> 
           </div>
           <div className= {classes.nonmobile}>
           <NavbarContent>

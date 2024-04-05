@@ -8,6 +8,7 @@ import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css' // Import css
 import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/react";
 import { useRouter } from 'next/router'
+import classes from './Map.module.css';
 
 
 mapboxgl.accessToken =
@@ -119,9 +120,9 @@ console.log(globalCtx.theGlobalObject)
     
   return (
     <div>
-      <Card  className="py-12 px-12  bg-card backdrop-blur-2xl xl-card">
+      <Card  className="py-5 px-4  bg-card backdrop-blur-2xl xl-card">
       <CardBody className="">
-      <div id="map" style={{ width: "100%", height: "70vh",  borderRadius: 30, color:"black"}}></div>
+      <div id="map" className={classes.map}></div>
       </CardBody>
       </Card>
     </div>

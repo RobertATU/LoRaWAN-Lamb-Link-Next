@@ -8,6 +8,11 @@
     max-width: 100%;
   }
   }
+  @media(max-height: 768px){
+    .main{
+      max-width: 100%;
+    }
+    }
 
 .icon{
   display: flex;

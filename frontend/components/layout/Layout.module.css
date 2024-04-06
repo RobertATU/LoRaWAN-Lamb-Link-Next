@@ -44,3 +44,9 @@
     display: none;
   }
   }
+  @media(max-height: 768px){
+    .icon,
+    .iconMag{
+      display: none;
+    }
+    }

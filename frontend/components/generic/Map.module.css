@@ -10,3 +10,9 @@
         height: 80vh;
     }
     }
+
+    @media(max-height: 768px){
+        .map{
+            height: 60vh;
+        }
+        }

@@ -69,7 +69,7 @@ function DropdownSidebar() {
           </div>
           <div className= {classes.nonmobile}>
           <NavbarContent>
-            <NavbarBrand style={{ position:"fixed", left:"43vw"}} className='hidden sm:flex gap-4" justify-end'>
+            <NavbarBrand style={{ position:"fixed", left:"40vw"}} className='hidden sm:flex gap-4" justify-end'>
               <p className="font-bold text-inherit text-4xl">LoRaWAN Lamb Link</p>
             </NavbarBrand>
           </NavbarContent>

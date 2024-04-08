@@ -6,41 +6,39 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.GetMapping;
-
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
-import java.text.SimpleDateFormat;
-
-import com.twilio.Twilio;
-import com.twilio.converter.Promoter;
-import com.twilio.rest.api.v2010.account.Message;
-import com.twilio.type.PhoneNumber;
-
-import java.net.URI;
-import java.math.BigDecimal;
+import java.util.TimeZone;
 
 @Service
 public class PinsService {
     // Find your Account Sid and Token at twilio.com/console
     public static final String ACCOUNT_SID = "";
     public static final String AUTH_TOKEN = "";
-    public int count, upsideDown;
+    public int count;
     @Autowired
     private PinsRepo pinsRepo;
     public List<Pins>allPins(){
         List<Pins> pinsList = pinsRepo.findAll();
         SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy, HH:mm:ss");
 
+        Calendar calendar = Calendar.getInstance();
+
+        TimeZone irelandTime = TimeZone.getTimeZone("Europe/Dublin");
+
+        boolean isDaylightSaving = irelandTime.inDaylightTime(calendar.getTime());
             for(Pins pins : pinsList) {
-                System.out.println(pins.getId().getDate());
+                if(isDaylightSaving){
+                    calendar.setTime(pins.getId().getDate());
+                    calendar.add(Calendar.HOUR_OF_DAY,1);
+                    pins.setDate(outputFormat.format(calendar.getTime()));
+                }
 
-                pins.setDate(outputFormat.format(pins.getId().getDate()));
-
+        else {
+                    pins.setDate(outputFormat.format(pins.getId().getDate()));
+                }
             }
         return pinsList;
     }
@@ -77,7 +75,7 @@ public class PinsService {
             Message message = Message.creator(
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
                     new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
-                    "Your Sheep"+pins.getSheepId()+" is back up. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
+                    "Your Sheep: "+pins.getSheepId()+" is back up. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
 
             System.out.println(message.getSid());
 
@@ -95,7 +93,7 @@ public class PinsService {
             Message message = Message.creator(
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
                     new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
-                    "Your Sheep"+pins.getSheepId()+ " is in need of assistance. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
+                    "Your Sheep: "+pins.getSheepId()+ " is in need of assistance. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
 
             System.out.println(message.getSid());
 

@@ -1,7 +1,7 @@
 package ie.atu.springbackend;
-
 import com.twilio.Twilio;
 import com.twilio.rest.api.v2010.account.Message;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,14 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Optional;
 import java.util.TimeZone;
 
 @Service
 public class PinsService {
-    // Find your Account Sid and Token at twilio.com/console
-    public static final String ACCOUNT_SID = "";
-    public static final String AUTH_TOKEN = "";
+    public static final String ACCOUNT_SID = Dotenv.load().get("ACCOUNT_SID");
+    public static final String AUTH_TOKEN = Dotenv.load().get("AUTH_TOKEN");
     public int count;
     @Autowired
     private PinsRepo pinsRepo;
@@ -43,9 +41,6 @@ public class PinsService {
         return pinsList;
     }
 
-    public Optional<Pins> findPinsById(String sheepId) {
-        return pinsRepo.findPinsBySheepId(sheepId);
-    }
 
 
     public Pins addPins(Pins pins) {

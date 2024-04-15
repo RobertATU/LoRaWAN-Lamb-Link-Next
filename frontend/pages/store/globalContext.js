@@ -1,9 +1,3 @@
-// Lets do all database stuff here and just share this global context with the rest of the App
-// - so no database code anywhere else in our App
-// - every CRUD function the App needs to do is in here, in one place
-// - makes debugging etc so much easier
-// - all external connections still have to go through /api routes
-
 import { createContext, useState, useEffect } from "react";
 
 const GlobalContext = createContext();
@@ -40,8 +34,8 @@ export function GlobalContextProvider(props) {
     });
   }
 
-  async function updateAllPins(center,zoom) {
-    console.log(globals)
+  async function updateAllPins(center, zoom) {
+    console.log(globals);
     const response = await fetch("/api/get-pins", {
       method: "Get",
       headers: {
@@ -49,10 +43,8 @@ export function GlobalContextProvider(props) {
       },
     });
     let data = await response.json();
-    
 
     setGlobals((previousGlobals) => {
-        
       const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
       newGlobals.pins = data;
       newGlobals.mapCenter = center;
@@ -74,14 +66,7 @@ export function GlobalContextProvider(props) {
   }
 
   async function editGlobalData(command) {
-    if (command.cmd == "hideHamMenu") {
-      setGlobals((previousGlobals) => {
-        const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        newGlobals.hideHamMenu = command.newVal;
-        return newGlobals;
-      });
-    }
-
+  
     if (command.cmd == "updateMapCenter") {
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));

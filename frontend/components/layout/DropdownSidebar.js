@@ -1,9 +1,6 @@
 import classes from "./DropdownSidebar.module.css";
-
 import { useContext } from "react";
 import GlobalContext from "../../pages/store/globalContext";
-
-import { useRouter } from "next/router";
 import React from "react";
 
 
@@ -12,12 +9,9 @@ import {
   Navbar,
   NavbarBrand,
   NavbarContent,
-  NavbarItem,
   NavbarMenuToggle,
   NavbarMenu,
   NavbarMenuItem,
-  Button,
-  Dropdown,
 } from "@nextui-org/react";
 
 function DropdownSidebar() {

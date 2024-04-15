@@ -3,13 +3,14 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useContext } from "react";
 import GlobalContext from "../../pages/store/globalContext";
-import { confirmAlert } from "react-confirm-alert"; 
-import "react-confirm-alert/src/react-confirm-alert.css"; 
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { Card, CardBody } from "@nextui-org/react";
 import { useRouter } from "next/router";
 import classes from "./Map.module.css";
 
-mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN
+mapboxgl.accessToken =
+  "pk.eyJ1Ijoicm9iZXJ0bXVsZG9vbmZ5cCIsImEiOiJjbHBlajVqejIxZDc5MmhybGZha3N3dGF3In0.EmdczNp0fNiA_es8l1-y9Q";
 function Map() {
   const [map, setMap] = useState(null);
   const globalCtx = useContext(GlobalContext);
@@ -33,7 +34,6 @@ function Map() {
     console.log(zoom);
     console.log(pins);
     const initializeMap = () => {
-      
       const mapInst = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v12",

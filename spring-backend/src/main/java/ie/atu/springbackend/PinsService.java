@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
 import java.util.TimeZone;
 
 @Service
@@ -44,23 +45,13 @@ public class PinsService {
 
 
     public Pins addPins(Pins pins) {
-        System.out.println("Service:"+pins);
-        System.out.println("work");
-        System.out.println(pins);
-        System.out.println(pins.getObjectJSON());
-        System.out.println(pins.getDeviceName());
-        System.out.println(pins.getDevEUI());
-
-
         String jsonString = pins.getObjectJSON();
         JSONObject json = new JSONObject(jsonString);
-
-
         pins.setLongitude(json.getDouble("longitude"));
         pins.setLatitude(json.getDouble("latitude"));
         pins.setSheepId(json.getString("name"));
         pins.setAccelero_x(json.getDouble("accelero_x"));
-        pins.setGenId(String.valueOf((allPins().toArray().length + 1)));
+        pins.setGenId(String.valueOf(new Random().nextInt(1000000)));
         if(pins.getAccelero_x() < 0){
             count++;
             System.out.println("Count" + count);
@@ -71,8 +62,7 @@ public class PinsService {
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
                     new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
                     "Your Sheep: "+pins.getSheepId()+" is back up. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
-
-            System.out.println(message.getSid());
+                    System.out.println(message.getSid());
 
             count = 0;
             System.out.println("Count" + count);
@@ -89,8 +79,7 @@ public class PinsService {
                     new com.twilio.type.PhoneNumber("whatsapp:+353877178072"),
                     new com.twilio.type.PhoneNumber("whatsapp:+14155238886"),
                     "Your Sheep: "+pins.getSheepId()+ " is in need of assistance. View Location: https://lo-ra-wan-lamb-link-next.vercel.app/").create();
-
-            System.out.println(message.getSid());
+                    System.out.println(message.getSid());
 
         }
         System.out.println(pins);

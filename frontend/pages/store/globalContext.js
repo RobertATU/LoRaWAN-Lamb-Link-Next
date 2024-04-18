@@ -8,7 +8,7 @@ export function GlobalContextProvider(props) {
     count: 0,
     hideHamMenu: true,
     pins: [],
-    mapCenter: [-7.503, 53.4495],
+    mapCenter: [-8.503, 53.4495],
     zoom: 6.5,
     dataLoaded: false,
   });

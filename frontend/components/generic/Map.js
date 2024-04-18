@@ -30,9 +30,6 @@ function Map() {
   }, []);
 
   useEffect(() => {
-    console.log(globalCtx.theGlobalObject);
-    console.log(zoom);
-    console.log(pins);
     const initializeMap = () => {
       const mapInst = new mapboxgl.Map({
         container: "map",

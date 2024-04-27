@@ -86,7 +86,7 @@ public class PinsService {
         return pinsRepo.save(pins);
     }
 
-    @Transactional
+
     public Pins deletePin(String genId) {
         return pinsRepo.deletePinsByGenId(genId);
     }

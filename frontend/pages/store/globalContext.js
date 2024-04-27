@@ -79,7 +79,7 @@ export function GlobalContextProvider(props) {
     if (command.cmd == "updateZoom") {
       setGlobals((previousGlobals) => {
         const newGlobals = JSON.parse(JSON.stringify(previousGlobals));
-        newGlobals.mapCenter = [-7.503, 53.4495];
+        newGlobals.mapCenter = [-8.503, 53.4495];
         newGlobals.zoom = 6.5;
         return newGlobals;
       });

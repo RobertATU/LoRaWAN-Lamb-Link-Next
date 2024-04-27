@@ -17,7 +17,6 @@ public class Pins {
 
     private String genId;
 
-
     private String sheepId;
 
     private double longitude;
@@ -29,6 +28,4 @@ public class Pins {
     private String date;
 
     private String objectJSON;
-    private String devEUI;
-    private String deviceName;
 }

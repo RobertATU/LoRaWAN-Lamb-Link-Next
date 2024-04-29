@@ -18,7 +18,7 @@ public class PinsController {
 
 
     @DeleteMapping("/removePin/{genId}")
-    public Pins addPins(@PathVariable String genId){
+    public Pins deletePins(@PathVariable String genId){
         return pinsService.deletePin(genId);
     }
 
